@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Over mij – Davy Aerts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <style>
+    :root {
+      --surface-0: #f5f5f4;
+      --surface-1: #efefee;
+      --surface-2: #ffffff;
+      --text-primary: #1a1a18;
+      --text-secondary: #5f5e5a;
+      --text-muted: #888780;
+      --border: rgba(0,0,0,0.10);
+      --border-strong: rgba(0,0,0,0.18);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --surface-0: #1c1c1a;
+        --surface-1: #242422;
+        --surface-2: #2e2e2b;
+        --text-primary: #f0efe9;
+        --text-secondary: #a8a79f;
+        --text-muted: #6b6a65;
+        --border: rgba(255,255,255,0.09);
+        --border-strong: rgba(255,255,255,0.16);
+      }
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--surface-0); color: var(--text-primary); min-height: 100vh; }
+
+    /* NAV */
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; position: sticky; top: 0; z-index: 10; background: var(--surface-0); border-bottom: 0.5px solid var(--border); backdrop-filter: blur(8px); }
+    .nav-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+    .nav-avatar { width: 30px; height: 30px; border-radius: 50%; background: #0f6e56; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: #e1f5ee; flex-shrink: 0; }
+    .nav-name { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+    .nav-links { display: flex; gap: 0; }
+    .nav-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: 5px; padding: 6px 10px; border-radius: 7px; transition: background 0.12s, color 0.12s; }
+    .nav-links a:hover { background: var(--surface-1); color: var(--text-primary); }
+    .nav-links a span { display: none; }
+    @media (min-width: 520px) { .nav-links a span { display: inline; } }
+
+    /* BACK LINK */
+    .back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-secondary); text-decoration: none; padding: 0.75rem 1.5rem 0; transition: color 0.12s; max-width: 720px; margin: 0 auto; display: block; }
+    .back-inner { display: inline-flex; align-items: center; gap: 6px; }
+    .back-inner:hover { color: var(--text-primary); }
+
+    /* HERO */
+    .hero { padding: 2.5rem 1.5rem 3rem; border-bottom: 0.5px solid var(--border); max-width: 720px; margin: 0 auto; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 6px; background: #e1f5ee; color: #085041; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 20px; padding: 4px 10px; margin-bottom: 1.5rem; }
+    .hero-layout { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: start; }
+    @media (min-width: 580px) { .hero-layout { grid-template-columns: 1fr auto; } }
+    .hero h1 { font-size: clamp(28px, 6vw, 44px); font-weight: 500; line-height: 1.1; margin-bottom: 1rem; }
+    .hero h1 em { font-style: normal; color: #1d9e75; }
+    .hero-sub { font-size: 16px; color: var(--text-secondary); line-height: 1.7; }
+    .hero-photo { width: 120px; height: 160px; border-radius: 16px; object-fit: cover; border: 0.5px solid var(--border); flex-shrink: 0; }
+    @media (max-width: 579px) { .hero-photo { width: 80px; height: 80px; border-radius: 12px; } }
+
+    /* SECTION */
+    .section { padding: 3rem 1.5rem; border-bottom: 0.5px solid var(--border); max-width: 720px; margin: 0 auto; }
+    .section:last-of-type { border-bottom: none; }
+    .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #1d9e75; margin-bottom: 0.5rem; }
+    .section h2 { font-size: clamp(18px, 4vw, 24px); font-weight: 500; margin-bottom: 1.25rem; line-height: 1.3; }
+
+    /* BIO PARAGRAPHS */
+    .bio p { font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.25rem; }
+    .bio p:last-child { margin-bottom: 0; }
+    .bio strong { color: var(--text-primary); font-weight: 500; }
+
+    /* CERTS */
+    .certs { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.75rem; margin-top: 1.5rem; }
+    .cert { background: var(--surface-1); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; display: flex; align-items: center; gap: 10px; }
+    .cert-icon { font-size: 20px; color: #1d9e75; flex-shrink: 0; }
+    .cert-label { font-size: 13px; font-weight: 500; }
+
+    /* PROJECTS */
+    .projects { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+    .project { border: 0.5px solid var(--border); border-radius: 12px; padding: 1.25rem; position: relative; overflow: hidden; }
+    .project::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: #1d9e75; border-radius: 12px 12px 0 0; }
+    .project h3 { font-size: 14px; font-weight: 500; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 8px; }
+    .project h3 i { color: #1d9e75; font-size: 16px; }
+    .project p { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+
+    /* CTA */
+    .cta-section { padding: 3rem 1.5rem; max-width: 720px; margin: 0 auto; }
+    .cta-card { background: var(--surface-1); border: 0.5px solid var(--border); border-radius: 16px; padding: 2rem; text-align: center; }
+    .cta-card h2 { font-size: 20px; font-weight: 500; margin-bottom: 0.75rem; }
+    .cta-card p { font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .cta-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 6px; background: #0f6e56; color: #e1f5ee; border-radius: 8px; padding: 10px 18px; font-size: 14px; font-weight: 500; text-decoration: none; transition: background 0.15s; }
+    .btn-primary:hover { background: #085041; }
+    .btn-ghost { display: inline-flex; align-items: center; gap: 6px; color: var(--text-secondary); border-radius: 8px; padding: 10px 18px; font-size: 14px; font-weight: 500; text-decoration: none; border: 0.5px solid var(--border-strong); transition: background 0.15s, color 0.15s; }
+    .btn-ghost:hover { background: var(--surface-1); color: var(--text-primary); }
+
+    /* FOOTER */
+    .footer-wrap { border-top: 0.5px solid var(--border); }
+    .footer { padding: 2rem 1.5rem; display: flex; flex-direction: column; gap: 1rem; max-width: 720px; margin: 0 auto; }
+    @media (min-width: 520px) { .footer { flex-direction: row; align-items: center; justify-content: space-between; } }
+    .footer-links { display: flex; gap: 0; }
+    .footer-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: 5px; padding: 6px 10px; border-radius: 7px; transition: background 0.12s, color 0.12s; }
+    .footer-links a:hover { background: var(--surface-1); color: var(--text-primary); }
+    .footer-links a span { display: none; }
+    @media (min-width: 400px) { .footer-links a span { display: inline; } }
+    .footer-copy { font-size: 12px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a class="nav-logo" href="index.html">
+      <div class="nav-avatar">DA</div>
+      <span class="nav-name">Davy Aerts</span>
+    </a>
+    <div class="nav-links">
+      <a href="https://www.linkedin.com/in/davy-a-5944a65a/" target="_blank">
+        <i class="ti ti-brand-linkedin"></i><span>LinkedIn</span>
+      </a>
+      <a href="https://github.com/DavyMCT" target="_blank">
+        <i class="ti ti-brand-github"></i><span>GitHub</span>
+      </a>
+      <a href="https://learn.microsoft.com/en-us/users/davyaerts-4864/transcript/deleam219jnr38v" target="_blank">
+        <i class="ti ti-certificate"></i><span>Transcript</span>
+      </a>
+    </div>
+  </nav>
+
+  <div style="max-width:720px;margin:0 auto;padding:0.75rem 1.5rem 0;">
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-secondary);text-decoration:none;">
+      <i class="ti ti-arrow-left"></i> Terug naar home
+    </a>
+  </div>
+
+  <div class="hero">
+    <div class="hero-tag"><i class="ti ti-user"></i> Over mij</div>
+    <div class="hero-layout">
+      <div>
+        <h1>Davy<br><em>Aerts</em></h1>
+        <p class="hero-sub">Cloud Engineer &amp; Microsoft Certified Trainer — Antwerpen</p>
+      </div>
+      <img
+        class="hero-photo"
+        src="DavyCartoon.png"
+        alt="Foto van Davy Aerts"
+      />
+    </div>
+  </div>
+
+  <div class="section bio">
+    <p class="section-label">Wie ben ik</p>
+    <h2>Cloud Engineer met een hart voor kennis</h2>
+    <p>Ik ben Davy Aerts, woonachtig te <strong>Antwerpen</strong> samen met mijn vrouw en konijntjes. Als <strong>Cloud Engineer en Microsoft Certified Trainer</strong> heb ik meer dan 10 jaar ervaring in IT-infrastructuur, cloudservices en beveiliging.</p>
+    <p>Ik heb een sterke focus op <strong>Microsoft 365, Azure en beveiligingsoplossingen</strong> en zorg ervoor dat de systemen van mijn klanten altijd goed werken, veilig zijn en met hen mee kunnen groeien.</p>
+    <p>Met meerdere Microsoft-certificaten op zak geef ik regelmatig trainingen over Microsoft-technologieën, waaronder de AB-900-certificering. Wat mijn trainingen echt waardevol maakt, is dat ik ze combineer met praktijkervaring uit de vele projecten die ik heb uitgevoerd.</p>
+    <p>Wat mij echt drijft, is het <strong>delen van kennis</strong>. Ik vind het leuk om mijn collega's te helpen — of dat nu persoonlijk is, via een kennisartikel, of gewoon door hun vragen te beantwoorden gedurende de dag.</p>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Certificaten</p>
+    <h2>Microsoft-certificeringen</h2>
+    <div class="certs">
+      <div class="cert">
+        <div class="cert-icon"><i class="ti ti-award"></i></div>
+        <span class="cert-label">MCT</span>
+      </div>
+      <div class="cert">
+        <div class="cert-icon"><i class="ti ti-certificate"></i></div>
+        <span class="cert-label">AB-900</span>
+      </div>
+      <div class="cert">
+        <div class="cert-icon"><i class="ti ti-cloud"></i></div>
+        <span class="cert-label">Microsoft 365</span>
+      </div>
+      <div class="cert">
+        <div class="cert-icon"><i class="ti ti-shield-check"></i></div>
+        <span class="cert-label">Azure Security</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Ervaring</p>
+    <h2>Projecten &amp; migraties</h2>
+    <div class="projects">
+      <div class="project">
+        <h3><i class="ti ti-folders"></i> OneDrive-migratie</h3>
+        <p>Verplaatsen van bestanden naar OneDrive voor naadloze cloudopslag en samenwerking binnen de organisatie.</p>
+      </div>
+      <div class="project">
+        <h3><i class="ti ti-phone-call"></i> VoIP naar Microsoft Teams</h3>
+        <p>Overschakelen van traditionele VoIP-systemen naar Microsoft Teams voor geïntegreerde communicatie.</p>
+      </div>
+      <div class="project">
+        <h3><i class="ti ti-device-laptop"></i> Microsoft Intune</h3>
+        <p>Ontwerpen en implementeren van Microsoft Intune voor beveiligd apparaatbeheer op organisatieniveau.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <div class="cta-card">
+      <h2>Klaar om samen te werken?</h2>
+      <p>Of je nu je team wilt trainen, naar de cloud wilt overstappen of je beveiliging wilt verbeteren — ik sta klaar met de kennis, ervaring en passie om je te ondersteunen.</p>
+      <div class="cta-actions">
+        <a class="btn-primary" href="https://www.linkedin.com/in/davy-a-5944a65a/" target="_blank">
+          <i class="ti ti-brand-linkedin"></i> Neem contact op
+        </a>
+        <a class="btn-ghost" href="https://learn.microsoft.com/en-us/users/davyaerts-4864/transcript/deleam219jnr38v" target="_blank">
+          <i class="ti ti-certificate"></i> Bekijk transcript
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-wrap">
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/davy-a-5944a65a/" target="_blank">
+          <i class="ti ti-brand-linkedin"></i><span>LinkedIn</span>
+        </a>
+        <a href="https://github.com/DavyMCT" target="_blank">
+          <i class="ti ti-brand-github"></i><span>GitHub</span>
+        </a>
+        <a href="https://learn.microsoft.com/en-us/users/davyaerts-4864/transcript/deleam219jnr38v" target="_blank">
+          <i class="ti ti-certificate"></i><span>Transcript</span>
+        </a>
+      </div>
+      <span class="footer-copy">© Davy Aerts – Freelance Trainer</span>
+    </footer>
+  </div>
+
+</body>
+</html>
